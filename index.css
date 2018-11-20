@@ -1,0 +1,128 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+li.todo-item, #new-todo {
+    display: flex;
+    align-items: center;
+    padding: 0px 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.1);
+    position: relative;
+    background-color: white;
+}
+
+li.todo-item.done {
+    text-decoration: line-through;
+    color: #ccc
+}
+
+ul#todos {
+    min-height: 60px;
+}
+ul#todos:after {
+    content: 'Nothing left to do!';
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+
+}
+
+input[type=text] {
+    border-radius: 3px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+li.todo-item button {
+    bottom: 0px;
+    top: 0px;
+    position: absolute;
+    width: 50px;
+    padding: 0;
+}
+
+li.todo-item .todo-complete {
+    left: 0px;
+    background-color: #2ba560;
+    color: white;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+li.todo-item.done .todo-complete {
+    background-color: #ccc;
+}
+
+li.todo-item .todo-delete {
+    right: 0px;
+    background-color: #ccc;
+    color: #d12f2f;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+#new-todo input[type=text] {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 300px;
+}
+#new-todo input[type=submit] {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+input[type=button], button, input[type=submit] {
+    border: 0px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.input[type=button]:hover, button:hover, input[type=submit]:hover {
+  filter: brightness(105%);
+}
+
+#controls {
+    display: flex;
+}
+#controls button {
+    flex: 1;
+    display: block;
+    margin-right: 10px;
+}
+
+#error {
+    font-family: monospace;
+    font-size: 1.5em;
+    color: #d12f2f;
+    border: 2px solid #d12f2f;
+    padding: 5px;
+    border-radius: 3px;
+    position: relative;
+}
+#error:before {
+    content: 'Error:';
+    position: absolute;
+    left: -70px;
+    width: 70px;
+    color: #d12f2f;
+    font-size: 1em;
+}
+#error.empty {
+    display:none;
+}
