@@ -13,9 +13,15 @@ function homework (renderList) {
 
 	// ✅This function should:
 	// ◽ remove all of the todo items
+	function isUncompleted (toDoText) {
+		return toDoText.charAt(0) !== "X";
+	}
+
+	// ✅This function should:
+	// ◽ remove all of the todo items
 	function onClearAll () {
 		// Add code here
-
+		todos = []
 		renderList(todos);
 	}
 
@@ -23,7 +29,7 @@ function homework (renderList) {
 	// ◽ sort the array of todos alphabetically
 	function onSort () {
 		// Add code here
-
+		todos.sort();
 		renderList(todos);
 	}
 
@@ -31,7 +37,7 @@ function homework (renderList) {
 	// ◽ reverse the order of the todos in the array
 	function onReverse () {
 		// Add code here
-
+		todos.reverse();
 		renderList(todos);
 	}
 
@@ -40,7 +46,11 @@ function homework (renderList) {
 	// ◽ bonus: do not allow new items to be less than 3 characters long
 	function onAddTodo (newTodoText) {
 		// Add code here
-
+		if(newTodoText.length > 3){
+			todos.push(newTodoText);
+		} else {
+			alert("Please enter at last 3 characters");
+		} 
 		renderList(todos);
 	}
 
@@ -48,7 +58,7 @@ function homework (renderList) {
 	// ◽ remove the item at the selected index
 	function onRemoveTodo (index) {
 		// Add code here
-
+		todos.splice(index, 1);
 		renderList(todos);
 	}
 
@@ -58,7 +68,8 @@ function homework (renderList) {
 	// ◽ super bonus: remove the X if it already has one (put it back to incomplete)
 	function onCompleteTodo (index) {
 		// Add code here
-
+		//todos[index].charAt(0) === 'X' ? todos[index] = todos[index].slice(1) : todos[index] = 'X' + todos[index];
+		todos[index] = !isUncompleted(todos[index]) ? todos[index].slice(1) : "X" + todos[index] ;
 		renderList(todos);
 	}
 
@@ -66,7 +77,8 @@ function homework (renderList) {
 	// ◽ remove from the list all of the completed items (that start with 'X')
 	function onRemoveCompleted () {
 		// Add code here
-
+		//todos.filter(item => item.charAt(0) === 'X').map(item => todos.splice(todos.indexOf(item),1));
+		todos = todos.filter(isUncompleted);
 		renderList(todos);
 	}
 
@@ -74,7 +86,8 @@ function homework (renderList) {
 	// ◽ add an exclamation mark ('!') to the end of every item in the list
 	function onUrgent () {
 		// Add code here
-		
+		//todos.forEach(item => item + "!");
+		todos = todos.map(item => item + "!");
 		renderList(todos);
 	}
 
@@ -82,7 +95,12 @@ function homework (renderList) {
 	// ◽ display an alert with the first item on the list not marked as done (first without an 'X')
 	// ◽ bonus: consider what will happen if there are no more items left to do
 	function onWhatNext () {
-		alert('This is just a dummy message!');
+		var next = todos.find(isUncompleted);
+		if(!next){
+			alert("Take a reat there is noting to do");
+		} else {
+			alert("The next ToDo is " + next);
+		}
 	}
 
 	// ☝ ONLY EDIT ABOVE THIS LINE ☝
